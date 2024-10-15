@@ -11,21 +11,6 @@ import kaplay from "kaplay";
 //   body(),
 // ]);
 
-// add([
-//   rect(width(), 48),
-//   outline(4),
-//   area(),
-//   pos(0, height() - 48),
-//   body({ isStatic: true })
-// ]);
-
-// onKeyPress("space", () => {
-//   if (player.isGrounded()) {
-//     player.jump();
-//   }
-// })
-
-
 const k = kaplay({
   width: 1280,
   height: 720
@@ -41,6 +26,20 @@ const player = k.add([
   k.body()
 ]);
 
-// k.add([
-//   k.rect([k.width(), 300, k.pos(0, 300)])
-// ])
+k.add([
+  rect(width(), 48),
+  outline(4),
+  area(),
+  pos(0, height() - 48),
+  body({ isStatic: true })
+])
+
+// onKeyPress("space", () => {
+//   if (player.isGrounded()) {
+//     player.jump();
+//   }
+// })
+
+// onKeyPress("a", () => {
+//   player.move(-1000, 0);
+// })
