@@ -1,16 +1,5 @@
 import kaplay from "kaplay";
 
-// kaplay();
-// loadBean();
-// setGravity(1600);
-
-// const player = add([
-//   sprite("bean"),
-//   pos(center()),
-//   area(),
-//   body(),
-// ]);
-
 const k = kaplay({
   width: 1280,
   height: 720
@@ -34,12 +23,8 @@ k.add([
   body({ isStatic: true })
 ])
 
-// onKeyPress("space", () => {
-//   if (player.isGrounded()) {
-//     player.jump();
-//   }
-// })
-
-// onKeyPress("a", () => {
-//   player.move(-1000, 0);
-// })
+player.onKeyPress("space", () => {
+  if (player.isGrounded()) {
+    player.jump();
+  }
+})
