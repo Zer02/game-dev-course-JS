@@ -25,12 +25,15 @@ player.onKeyPress("space", () => {
 });
 
 k.loop(1, () => {
+  const speeds = [300, 500, 800, 1000, 1500];
+  const currentSpeed = speeds[Math.floor(Math.random() * speeds.length)]
+
   k.add([
     k.rect(50, 50),
     k.pos(1000, 500),
     k.area(),
     k.body(),
     k.outline(3),
-    k.move(k.vec2(-1, 0), 300),
+    k.move(k.vec2(-1, 0), currentSpeed),
   ]);
 });
