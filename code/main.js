@@ -8,7 +8,27 @@ const k = kaplay({
 k.loadBean();
 k.setGravity(1000);
 
-const player = k.add([k.sprite("bean"), k.pos(k.center()), k.area(), k.body()]);
+const player = k.add([
+  k.sprite("bean"),
+  k.pos(k.center()),
+  k.area(),
+  k.body(),
+  k.offscreen(),
+]);
+
+player.onKeyPress("space", () => {
+  if (player.isGrounded()) {
+    player.jump();
+  }
+});
+
+player.onExitScreen(() => {
+  k.go("gameover");
+})
+
+k.scene("gameover", () => {
+  k.add([k.text(`Game Over!\nScore: ${counter}`), k.pos(k.center())]);
+})
 
 k.add([
   rect(width(), 48),
@@ -18,15 +38,15 @@ k.add([
   body({ isStatic: true }),
 ]);
 
-player.onKeyPress("space", () => {
-  if (player.isGrounded()) {
-    player.jump();
-  }
-});
+let counter = 0;
+const counterUI = k.add([k.text("0")]);
 
 k.loop(1, () => {
+  counter++;
+  counterUI.text = counter;
+
   const speeds = [300, 500, 800, 1000, 1500];
-  const currentSpeed = speeds[Math.floor(Math.random() * speeds.length)]
+  const currentSpeed = speeds[Math.floor(Math.random() * speeds.length)];
 
   k.add([
     k.rect(50, 50),
